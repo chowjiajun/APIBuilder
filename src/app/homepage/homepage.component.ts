@@ -16,9 +16,13 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
-  openAddNewAPIModal() {
-    this.addNewAPIModal = this.modalService.show(AddNewApiModalComponent);
+  openAddNewAPIModal(event: Event) {
+    event.preventDefault();
+    this.addNewAPIModal = this.modalService.show(AddNewApiModalComponent, {
+      class: 'modal-lg modal-dialog-centered scrollable'
+    });
   }
 }

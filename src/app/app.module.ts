@@ -4,21 +4,25 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// Modals
+import { SharedModule } from './shared/shared.module';
+
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AddNewApiModalComponent } from './modals/add-new-api-modal/add-new-api-modal.component';
+import { ModalsModule } from './modals/modals.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AddNewApiModalComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ModalsModule,
+    SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

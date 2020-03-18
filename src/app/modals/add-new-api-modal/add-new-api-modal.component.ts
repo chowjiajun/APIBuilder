@@ -15,4 +15,7 @@ export class AddNewApiModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeModal() {
+    this.bsModalRef.hide();
+  }
 }
