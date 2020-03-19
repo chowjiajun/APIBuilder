@@ -1,1 +1,7 @@
-<small class="text-danger"></small>
+<div *ngIf="formC">
+    <ng-container *ngIf="formC.touched || formC.valid">
+        <ng-container *ngFor="let message of errorMessages">
+            <small class="text-danger" *ngIf="formC.hasError(message.error)">{{ message.text }}</small>
+        </ng-container>
+    </ng-container>
+</div>

@@ -1,56 +1,59 @@
-<div class="modal-header">
-    <h5 class="modal-title">Add New API</h5>
-    <button type="button" class="close" (click)="closeModal()">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="modal-body">
-    <div class="container-fluid">
-        <form>
-            <div class="row">
-                <div class="col-12 form-group">
-                    <label for="apiName">API Name</label>
-                    <input type="text" class="form-control" id="apiName">
-                    <app-error-message></app-error-message>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 form-group">
-                    <label for="apiDescription">Description</label>
-                    <textarea class="form-control" id="apiDescription"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 form-group">
-                    <label for="apiProducer">Producer</label>
-                    <input type="text" class="form-control" id="apiProducer">
-                </div>
-                <div class="col-6 form-group">
-                    <label for="apiWebServiceFormat">Web Service Format</label>
-                    <select type="text" class="form-control" id="apiWebServiceFormat">
-                        <option value="REST">REST</option>
-                        <option value="SOAP">SOAP</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 form-group">
-                    <label for="apiInput">Input</label>
-                    <select type="text" class="form-control" id="apiInput">
-                        <option value="JSON">JSON</option>
-                    </select>
-                </div>
-                <div class="col-6 form-group">
-                    <label for="apiOutput">Output</label>
-                    <select type="text" class="form-control" id="apiOutput">
-                        <option value="JSON">JSON</option>
-                    </select>
-                </div>
-            </div>
-        </form>
+<ng-container *ngIf="form">
+    <div class="modal-header">
+        <h5 class="modal-title">Add New API</h5>
+        <button type="button" class="close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary">Create</button>
-    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-</div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="apiName">API Name</label>
+                        <input type="text" class="form-control" id="apiName" formControlName="name" [ngClass]="{'is-invalid': form.get('name').valid || form.get('name').touched}">
+                        <app-error-message [formC]="form.get('name')"></app-error-message>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="apiDescription">Description</label>
+                        <textarea class="form-control" id="apiDescription" formControlName="description"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="apiProducer">Producer</label>
+                        <input type="text" class="form-control" id="apiProducer" formControlName="producer">
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="apiWebServiceFormat">Web Service Format</label>
+                        <select type="text" class="form-control" id="apiWebServiceFormat"
+                            formControlName="webServiceFormat">
+                            <option value="REST">REST</option>
+                            <option value="SOAP">SOAP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="apiInput">Input</label>
+                        <select type="text" class="form-control" id="apiInput" formControlName="input">
+                            <option value="JSON">JSON</option>
+                        </select>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="apiOutput">Output</label>
+                        <select type="text" class="form-control" id="apiOutput" formControlName="output">
+                            <option value="JSON">JSON</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="onSave()">Create</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+    </div>
+</ng-container>

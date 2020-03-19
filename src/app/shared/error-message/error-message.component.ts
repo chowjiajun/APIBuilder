@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-error-message',
@@ -7,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorMessageComponent implements OnInit {
 
+  @Input() formC: AbstractControl;
+
   errorMessages = [
-    { error: 'nameUsed', text: 'Name has already been used.'}
+    { error: 'required', text: 'This field is required.' }
   ];
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.formC);
   }
 
 }
