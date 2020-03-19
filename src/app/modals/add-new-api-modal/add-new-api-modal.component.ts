@@ -4,6 +4,7 @@ import { ApiDataHandlerService } from 'src/app/services/api-data-handler.service
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { API } from 'src/app/models/APIModel';
 import { FormService } from 'src/app/services/form.service';
+import { availableAPINameValidator } from 'src/app/validators/availableAPINameValidator';
 
 @Component({
   selector: 'app-add-new-api-modal',
@@ -27,7 +28,7 @@ export class AddNewApiModalComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, availableAPINameValidator(this.apiDataHandlerService)]],
       description: [''],
       producer: [''],
       webServiceFormat: ['REST'],
@@ -46,11 +47,8 @@ export class AddNewApiModalComponent implements OnInit {
         input: this.form.get('input').value,
         output: this.form.get('output').value
       };
-      try {
-        this.apiDataHandlerService.checkDuplicateAPINameAndSaveAPI(api);
-      } catch (error) {
-        console.log(error);
-      }
+      this.apiDataHandlerService.saveNewAPI(api);
+      this.closeModal();
     } else {
       this.formService.touchAllFields(this.form);
     }

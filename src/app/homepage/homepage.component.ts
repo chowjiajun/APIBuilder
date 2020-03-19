@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService,
-    private apiDataHandlerService: ApiDataHandlerService
+    public apiDataHandlerService: ApiDataHandlerService
   ) { }
 
   ngOnInit(): void {

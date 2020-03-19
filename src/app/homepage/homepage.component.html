@@ -18,7 +18,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" *ngFor="let apis of apiDataHandlerService.apis">
+            {{ apis.name }}
         </div>
     </div>
 </div>

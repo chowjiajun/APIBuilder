@@ -11,7 +11,8 @@ export class ErrorMessageComponent implements OnInit {
   @Input() formC: AbstractControl;
 
   errorMessages = [
-    { error: 'required', text: 'This field is required.' }
+    { error: 'required', text: 'This field is required.' },
+    { error: 'apiNameExists', text: 'API Name already exists' }
   ];
 
   constructor() { }
