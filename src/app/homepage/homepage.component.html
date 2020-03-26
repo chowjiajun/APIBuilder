@@ -6,20 +6,24 @@
         </div>
     </div>
     <!-- Search Bar -->
-    <div class="row">
+    <div class="row mb-5">
         <div class="container">
             <div class="col-12">
                 <form class="form-inline d-flex justify-content-center">
                     <input type="search" class="form-control mainSearchBar mr-3" placeholder="Search API Name">
-                    <button class="btn btn-primary mr-3" (click)="openAddNewAPIModal($event)">Add API</button>
-                    <button class="btn btn-success">Generate Excel</button>
+                    <button class="btn btn-primary mr-3" (click)="openAddNewAPIModal($event)">Add New</button>
+                    <button class="btn btn-success mr-3">Generate Excel</button>
+                    <button class="btn btn-danger" (click)="removeAll()">Remove All</button>
                 </form>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12" *ngFor="let apis of apiDataHandlerService.apis">
-            {{ apis.name }}
+    <div class="row mt-4" *ngFor="let api of apiDataHandlerService.apis">
+        <div class="container">
+            <div class="col-12 mt-2">
+                <app-api-accordian [api]="api">
+                </app-api-accordian>
+            </div>
         </div>
     </div>
 </div>

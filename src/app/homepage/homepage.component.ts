@@ -27,4 +27,8 @@ export class HomepageComponent implements OnInit {
       class: 'modal-lg modal-dialog-centered scrollable'
     });
   }
+
+  removeAll() {
+    this.apiDataHandlerService.clearAllApis();
+  }
 }
