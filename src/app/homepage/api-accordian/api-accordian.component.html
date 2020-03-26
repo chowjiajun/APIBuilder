@@ -1,7 +1,19 @@
-<a class="alert alert-primary d-flex justify-content-between align-items-center" (click)="isCollapsed = !isCollapsed"
-[attr.aria-expended]="!isCollapsed" aria-controls="collapseBody">
+<a class="alert d-flex justify-content-between align-items-center" (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expended]="!isCollapsed" aria-controls="collapseBody" [ngClass]="{
+    'alert-primary': api.method === 'GET',
+    'alert-warning': api.method === 'PUT',
+    'alert-success': api.method === 'POST',
+    'alert-danger': api.method === 'DELETE',
+    'alert-secondary': rarelyUsedMethods.includes(api.method)
+}">
     <h5><b>{{ api.name }}</b></h5>
-    <button class="btn btn-outline-primary btn-sm" disabled>POST</button>
+    <button class="btn text-light" disabled [ngClass]="{
+        'btn-primary': api.method === 'GET',
+        'btn-warning': api.method === 'PUT',
+        'btn-success': api.method === 'POST',
+        'btn-danger': api.method === 'DELETE',
+        'btn-secondary': rarelyUsedMethods.includes(api.method)
+    }">{{ api.method }}</button>
 </a>
 <div class="card" id="collapseBody" [isAnimated]="true" [collapse]="isCollapsed">
     <!-- API Basic Details -->

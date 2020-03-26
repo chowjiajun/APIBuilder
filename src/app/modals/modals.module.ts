@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { AddNewApiModalComponent } from './add-new-api-modal/add-new-api-modal.component';
 import { SharedModule } from '../shared/shared.module';
 import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/delete-confirmation-modal.component';
+import { EditApiModalComponent } from './edit-api-modal/edit-api-modal.component';
 
 @NgModule({
   declarations: [
     AddNewApiModalComponent,
-    DeleteConfirmationModalComponent
+    DeleteConfirmationModalComponent,
+    EditApiModalComponent
   ],
   imports: [
     CommonModule,
@@ -15,11 +17,13 @@ import { DeleteConfirmationModalComponent } from './delete-confirmation-modal/de
   ],
   exports: [
     AddNewApiModalComponent,
-    DeleteConfirmationModalComponent
+    DeleteConfirmationModalComponent,
+    EditApiModalComponent
   ],
   entryComponents: [
     AddNewApiModalComponent,
-    DeleteConfirmationModalComponent
+    DeleteConfirmationModalComponent,
+    EditApiModalComponent
   ]
 })
 export class ModalsModule { }

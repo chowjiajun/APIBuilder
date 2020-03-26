@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorMessageComponent } from './error-message/error-message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -12,13 +13,15 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    CollapseModule
+    CollapseModule,
+    FontAwesomeModule
   ],
   exports: [
     ErrorMessageComponent,
     FormsModule,
     ReactiveFormsModule,
-    CollapseModule
+    CollapseModule,
+    FontAwesomeModule
   ]
 })
 export class SharedModule { }

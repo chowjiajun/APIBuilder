@@ -9,3 +9,7 @@ a:hover {
 h5 {
     margin-bottom: 0px;
 }
+
+button {
+    width: 100px;
+}

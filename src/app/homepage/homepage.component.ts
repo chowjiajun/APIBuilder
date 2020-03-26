@@ -24,7 +24,7 @@ export class HomepageComponent implements OnInit {
   openAddNewAPIModal(event: Event) {
     event.preventDefault();
     this.addNewAPIModal = this.modalService.show(AddNewApiModalComponent, {
-      class: 'modal-lg modal-dialog-centered scrollable'
+      class: 'modal-xl modal-dialog-centered scrollable'
     });
   }
 

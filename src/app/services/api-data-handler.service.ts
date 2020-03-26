@@ -26,9 +26,7 @@ export class ApiDataHandlerService {
       if (api !== apiToDelete) {
         tempArray.push(api);
       }
-      debugger;
     });
-    console.log(tempArray);
     this.apis = tempArray;
     window.localStorage.setItem('apis', JSON.stringify(this.apis));
   }

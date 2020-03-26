@@ -5,4 +5,7 @@ export class API {
     webServiceFormat: string;
     input: string;
     output: string;
+    method: string;
+    inputFields?: [];
+    outputFields?: [];
 }

@@ -15,6 +15,8 @@ export class ApiAccordianComponent implements OnInit {
 
   isCollapsed = false;
   deleteModalRef: BsModalRef;
+  editModalRef: BsModalRef;
+  rarelyUsedMethods: string[] = ['PATCH', 'TRACE', 'HEAD', 'CONNECT', 'OPTIONS'];
 
   constructor(
     private apiDataHandlerService: ApiDataHandlerService,
@@ -23,6 +25,10 @@ export class ApiAccordianComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('API: ', this.api);
+  }
+
+  editAPI() {
+    
   }
 
   deleteAPI() {

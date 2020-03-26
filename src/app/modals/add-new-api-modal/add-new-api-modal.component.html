@@ -34,23 +34,94 @@
                         <select type="text" class="form-control" id="apiWebServiceFormat"
                             formControlName="webServiceFormat">
                             <option value="REST">REST</option>
-                            <option value="SOAP">SOAP</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 form-group">
+                    <div class="col-4 form-group">
+                        <label for="apiMethod">Method</label>
+                        <select type="text" class="form-control" id="apiMethod" formControlName="method">
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                            <option value="PATCH">PATCH</option>
+                            <option value="TRACE">TRACE</option>
+                            <option value="OPTIONS">OPTIONS</option>
+                            <option value="CONNECT">CONNECT</option>
+                            <option value="HEAD">HEAD</option>
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
                         <label for="apiInput">Input</label>
                         <select type="text" class="form-control" id="apiInput" formControlName="input">
                             <option value="JSON">JSON</option>
                         </select>
                     </div>
-                    <div class="col-6 form-group">
+                    <div class="col-4 form-group">
                         <label for="apiOutput">Output</label>
                         <select type="text" class="form-control" id="apiOutput" formControlName="output">
                             <option value="JSON">JSON</option>
                         </select>
                     </div>
+                </div>
+                <div class="row mt-4 mb-4">
+                    <div class="col-12 d-flex justify-content-between align-items-center mt-4 mb-4">
+                        <h5>Input Fields</h5>
+                        <button class="btn btn-outline-primary" (click)="addInputField()">Add Field</button>
+                    </div>
+                    <table class="table .table-bordered text-center p-2">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 5%">S/N</th>
+                                <th scope="col" style="width: 30%">Input Field</th>
+                                <th scope="col" style="width: 10%">Data Type</th>
+                                <th scope="col" style="width: 10%">Length</th>
+                                <th scope="col" style="width: 5%">Mandatory</th>
+                                <th scope="col" style="width: 30%">Remarks</th>
+                                <th scope="col" style="width: 10%">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container formArrayName="inputFields" *ngFor="let inputField of inputFields.controls; index as i">
+                                <tr formGroupName="{{i}}">
+                                    <th scope="row form-control-sm" style="padding-top: 16px">
+                                        {{ inputField.value.serialNo }}
+                                    </th>
+                                    <td>
+                                        <input class="form-control form-control-sm" type="text" formControlName="inputField" placeholder="Name Of Input Field"/>
+                                    </td>
+                                    <td>
+                                        <select class="form-control form-control-sm" formControlName="dataType">
+                                            <option value="CHAR">CHAR</option>
+                                            <option value="VARCHAR">VARCHAR</option>
+                                            <option value="INTEGER">INTEGER</option>
+                                            <option value="BIGINT">BIGINT</option>
+                                            <option value="DATE">DATE</option>
+                                            <option value="TIMESTAMP">TIMESTAMP</option>
+                                            <option value="BLOB">BLOB</option>
+                                            <option value="ARRAYLIST">ARRAYLIST</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-control-sm" type="number" min="0" formControlName="length">
+                                    </td>
+                                    <td>
+                                        <select class="form-control form-control-sm" formControlName="mandatory">
+                                            <option value="NO">No</option>
+                                            <option value="YES">Yes</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-control-sm" type="text" formControlName="remarks">
+                                    </td>
+                                    <td class="d-flex align-items-center justify-content-center">
+                                        <fa-icon [icon]="deleteIcon" style="color: red"></fa-icon>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
                 </div>
             </form>
         </div>
