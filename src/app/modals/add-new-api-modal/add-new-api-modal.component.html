@@ -70,58 +70,67 @@
                         <h5>Input Fields</h5>
                         <button class="btn btn-outline-primary" (click)="addInputField()">Add Field</button>
                     </div>
-                    <table class="table .table-bordered text-center p-2">
-                        <thead>
-                            <tr>
-                                <th scope="col" style="width: 5%">S/N</th>
-                                <th scope="col" style="width: 30%">Input Field</th>
-                                <th scope="col" style="width: 10%">Data Type</th>
-                                <th scope="col" style="width: 10%">Length</th>
-                                <th scope="col" style="width: 5%">Mandatory</th>
-                                <th scope="col" style="width: 30%">Remarks</th>
-                                <th scope="col" style="width: 10%">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container formArrayName="inputFields" *ngFor="let inputField of inputFields.controls; index as i">
-                                <tr formGroupName="{{i}}">
-                                    <th scope="row form-control-sm" style="padding-top: 16px">
-                                        {{ inputField.value.serialNo }}
-                                    </th>
-                                    <td>
-                                        <input class="form-control form-control-sm" type="text" formControlName="inputField" placeholder="Name Of Input Field"/>
-                                    </td>
-                                    <td>
-                                        <select class="form-control form-control-sm" formControlName="dataType">
-                                            <option value="CHAR">CHAR</option>
-                                            <option value="VARCHAR">VARCHAR</option>
-                                            <option value="INTEGER">INTEGER</option>
-                                            <option value="BIGINT">BIGINT</option>
-                                            <option value="DATE">DATE</option>
-                                            <option value="TIMESTAMP">TIMESTAMP</option>
-                                            <option value="BLOB">BLOB</option>
-                                            <option value="ARRAYLIST">ARRAYLIST</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input class="form-control form-control-sm" type="number" min="0" formControlName="length">
-                                    </td>
-                                    <td>
-                                        <select class="form-control form-control-sm" formControlName="mandatory">
-                                            <option value="NO">No</option>
-                                            <option value="YES">Yes</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input class="form-control form-control-sm" type="text" formControlName="remarks">
-                                    </td>
-                                    <td class="d-flex align-items-center justify-content-center">
-                                        <fa-icon [icon]="deleteIcon" style="color: red"></fa-icon>
-                                    </td>
+                    <div class="col-12">
+                        <table class="table table-bordered text-center p-2">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 5%">S/N</th>
+                                    <th scope="col" style="width: 30%">Input Field</th>
+                                    <th scope="col" style="width: 15%">Data Type</th>
+                                    <th scope="col" style="width: 10%">Length</th>
+                                    <th scope="col" style="width: 5%">Mandatory</th>
+                                    <th scope="col" style="width: 30%">Remarks</th>
+                                    <th scope="col" style="width: 5%">Actions</th>
                                 </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <ng-container formArrayName="inputFields"
+                                    *ngFor="let inputField of inputFields.controls; index as i">
+                                    <tr formGroupName="{{i}}">
+                                        <th scope="row form-control-sm" class="tableSerialNo" style="padding-top: 16px">
+                                            {{ inputField.value.serialNo }}
+                                        </th>
+                                        <td>
+                                            <input class="form-control form-control-sm" type="text"
+                                                formControlName="inputField" placeholder="Name Of Input Field" />
+                                        </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" formControlName="dataType"
+                                                (click)="addInputSubField(i, inputField.get('dataType').value)">
+                                                <option value="CHAR">CHAR</option>
+                                                <option value="VARCHAR">VARCHAR</option>
+                                                <option value="INTEGER">INTEGER</option>
+                                                <option value="BIGINT">BIGINT</option>
+                                                <option value="DATE">DATE</option>
+                                                <option value="TIMESTAMP">TIMESTAMP</option>
+                                                <option value="BLOB">BLOB</option>
+                                                <option value="ARRAYLIST">ARRAYLIST</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input class="form-control form-control-sm" type="number" min="0"
+                                                formControlName="length">
+                                        </td>
+                                        <td>
+                                            <select class="form-control form-control-sm" formControlName="mandatory">
+                                                <option value="NO">No</option>
+                                                <option value="YES">Yes</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input class="form-control form-control-sm" type="text"
+                                                formControlName="remarks">
+                                        </td>
+                                        <td class="d-flex align-items-center justify-content-center"
+                                            style="border-top: 0px; padding-top: 16px">
+                                            <fa-icon [icon]="deleteIcon" style="color: red" (click)="deleteInputRow(i)">
+                                            </fa-icon>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </form>
         </div>
